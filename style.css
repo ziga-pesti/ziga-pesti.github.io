@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&display=swap');
+
+:root {
+    --bgCrimson: #85181f;
+    --bgDarkWine: #470c12;
+    --bgPineGreen: #132b1f;
+    --bgMidnight: #08140e;
+    --goldColor: #ffd700;
+    --holidayRed: #e74c3c;
+    --pineGreen: #27ae60;
+    --textColor: #ffffff;
+    --font: 'Karla', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: var(--font);
+    background: radial-gradient(circle at 50% 0%, var(--bgCrimson) 0%, var(--bgDarkWine) 35%, var(--bgPineGreen) 75%, var(--bgMidnight) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/*----------------- Canvas Background -----------------*/
+#snowCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    display: block;
+}
+
+/*----------------- Page Structure -----------------*/
+.page-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding: 40px 16px 60px;
+    opacity: 0;
+    animation: 0.7s ease-out 0.1s 1 fadeInTop;
+    animation-fill-mode: forwards;
+}
+
+/*------------- Centered Avatar with Santa Hat ------------*/
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+#profilePicture {
+    position: relative;
+    display: block;
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--holidayRed), var(--goldColor), var(--pineGreen));
+    box-shadow: 0 0 25px rgba(231, 76, 60, 0.5), 0 0 10px rgba(255, 215, 0, 0.4);
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#profilePicture:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.7), 0 0 15px rgba(231, 76, 60, 0.6);
+}
+
+#profilePicture img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+}
+
+.santa-hat {
+    position: absolute;
+    top: -20px;
+    left: -16px;
+    font-size: 40px;
+    transform: rotate(-22deg);
+    z-index: 5;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+    pointer-events: none;
+    user-select: none;
+}
+
+/*------------------ Typography ------------------*/
+#userName {
+    color: var(--textColor);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.25;
+    display: block;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+#userHandle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+#userSubtitle {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.88rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+/*----------------- Links Section -----------------*/
+#links {
+    max-width: 620px;
+    width: 100%;
+    display: block;
+    margin: 32px auto 0;
+}
+
+.link {
+    position: relative;
+    background: rgba(15, 35, 25, 0.55);
+    color: var(--textColor);
+    border: 1.5px solid rgba(255, 215, 0, 0.35);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    margin-bottom: 14px;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    -webkit-tap-highlight-color: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+@media (hover: hover) {
+    .link:hover {
+        background: linear-gradient(90deg, rgba(231, 76, 60, 0.4), rgba(39, 174, 96, 0.4));
+        border-color: var(--goldColor);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px rgba(255, 215, 0, 0.45);
+    }
+}
+
+.link:active {
+    transform: translateY(0);
+    background: rgba(255, 215, 0, 0.3);
+}
+
+/*----------------- Christmas Tree on the Right -----------------*/
+.christmas-tree {
+    position: fixed;
+    right: 25px;
+    bottom: 0;
+    width: 175px;
+    max-width: 25vw;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 0 18px rgba(0, 0, 0, 0.65));
+}
+
+@media (max-width: 860px) {
+    .christmas-tree {
+        width: 115px;
+        right: 8px;
+        opacity: 0.85;
+    }
+}
+
+@media (max-width: 520px) {
+    .christmas-tree {
+        width: 85px;
+        right: 2px;
+        opacity: 0.75;
+    }
+}
+
+/* Twinkling Christmas Lights */
+.light {
+    animation: twinkle 1.8s infinite ease-in-out alternate;
+    transform-origin: center;
+}
+
+.light-red {
+    fill: #ff3b30;
+    filter: drop-shadow(0 0 6px #ff3b30);
+    animation-delay: 0.1s;
+}
+
+.light-gold {
+    fill: #ffd700;
+    filter: drop-shadow(0 0 6px #ffd700);
+    animation-delay: 0.7s;
+}
+
+.light-cyan {
+    fill: #00e5ff;
+    filter: drop-shadow(0 0 6px #00e5ff);
+    animation-delay: 1.3s;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.35;
+        transform: scale(0.85);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/*-------------------- Modal Popup --------------------*/
+.overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.82);
+    z-index: 20;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    transition: 0.35s ease-in-out;
+}
+
+.popup {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    width: 90%;
+    margin: 20px;
+    background-color: var(--bgDarkWine);
+    border: 2px solid var(--goldColor);
+    border-radius: 16px;
+    overflow: hidden;
+    transform: scale(0.85);
+    transition: 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 215, 0, 0.25);
+}
+
+.popup-quote {
+    font-family: var(--font);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #ffffff;
+    padding: 22px 24px;
+    text-align: center;
+    background-color: var(--bgDarkWine);
+}
+
+.popup-photo {
+    display: flex;
+    width: 100%;
+    max-height: 270px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.popup-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.overlay:target .popup {
+    transform: scale(1);
+}
+
+.popup-close {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 22;
+    color: #ffffff;
+    line-height: 2.1rem;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.popup-close:hover {
+    background-color: var(--holidayRed);
+    transform: rotate(90deg);
+}
+
+/*----------------- Entrance Animation -----------------*/
+@keyframes fadeInTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Žiga Pešti | Computer Science & Software Developer</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/171288066?v=4" type="image/x-icon" />
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Core theme CSS with cache buster -->
+    <link rel="stylesheet" href="style.css?v=4" />
+  </head>
+
+  <body>
+    <!-- Falling Snowflakes Background -->
+    <canvas id="snowCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; display: block;"></canvas>
+
+    <!-- Christmas Tree on the Right Side -->
+    <div class="christmas-tree" aria-hidden="true">
+      <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tree Trunk -->
+        <rect x="88" y="215" width="24" height="40" rx="3" fill="#4a2511" />
+        <rect x="91" y="215" width="8" height="40" fill="#351a0b" />
+        
+        <!-- Bottom Tier -->
+        <polygon points="100,135 15,220 185,220" fill="#134f31" />
+        <polygon points="100,135 100,220 185,220" fill="#0e3d26" />
+        <!-- Snow on bottom tier -->
+        <path d="M15,220 Q45,210 70,218 Q100,208 130,218 Q155,210 185,220 L175,210 Q145,200 120,208 Q100,198 75,208 Q45,200 25,210 Z" fill="#eef6fb" opacity="0.9" />
+
+        <!-- Middle Tier -->
+        <polygon points="100,85 30,155 170,155" fill="#1a633e" />
+        <polygon points="100,85 100,155 170,155" fill="#145032" />
+        <!-- Snow on middle tier -->
+        <path d="M30,155 Q60,147 85,153 Q100,145 125,153 Q145,147 170,155 L160,147 Q135,138 115,145 Q100,137 80,145 Q55,138 40,147 Z" fill="#eef6fb" opacity="0.9" />
+
+        <!-- Top Tier -->
+        <polygon points="100,35 48,100 152,100" fill="#227a4d" />
+        <polygon points="100,35 100,100 152,100" fill="#1b633e" />
+        <!-- Snow on top tier -->
+        <path d="M48,100 Q75,93 100,98 Q125,93 152,100 L142,93 Q120,86 100,91 Q80,86 58,93 Z" fill="#eef6fb" opacity="0.9" />
+
+        <!-- Golden Tree Star -->
+        <polygon points="100,15 104,26 116,26 106,33 110,44 100,37 90,44 94,33 84,26 96,26" fill="#ffd700" filter="drop-shadow(0 0 6px rgba(255, 215, 0, 0.9))" />
+        <circle cx="100" cy="30" r="3" fill="#fff" opacity="0.8" />
+
+        <!-- Christmas Lights & Ornaments -->
+        <!-- Red Ornaments -->
+        <circle class="light light-red" cx="70" cy="190" r="5" />
+        <circle class="light light-red" cx="135" cy="180" r="5" />
+        <circle class="light light-red" cx="95" cy="120" r="4.5" />
+        <circle class="light light-red" cx="65" cy="85" r="4" />
+
+        <!-- Gold / Yellow Ornaments -->
+        <circle class="light light-gold" cx="110" cy="195" r="5" />
+        <circle class="light light-gold" cx="50" cy="140" r="4.5" />
+        <circle class="light light-gold" cx="130" cy="135" r="4.5" />
+        <circle class="light light-gold" cx="115" cy="75" r="4" />
+
+        <!-- Blue / Cyan Ornaments -->
+        <circle class="light light-cyan" cx="155" cy="205" r="5" />
+        <circle class="light light-cyan" cx="40" cy="205" r="5" />
+        <circle class="light light-cyan" cx="80" cy="145" r="4.5" />
+        <circle class="light light-cyan" cx="90" cy="65" r="4" />
+      </svg>
+    </div>
+
+    <!-- Main Container -->
+    <main class="page-container">
+      <!-- Centered Avatar with Santa Hat -->
+      <div class="avatar-container">
+        <a id="profilePicture" href="#popup" title="About Me">
+          <span class="santa-hat" aria-hidden="true">🎅</span>
+          <img src="https://avatars.githubusercontent.com/u/171288066?v=4" alt="Žiga Pešti Profile Picture">
+        </a>
+      </div>
+
+      <!-- Modal Popup for Bio -->
+      <div class="overlay" id="popup">
+        <div class="popup">
+          <div class="popup-photo">
+            <a href="https://avatars.githubusercontent.com/u/171288066?v=4" target="_blank">
+              <img src="https://avatars.githubusercontent.com/u/171288066?v=4" alt="Žiga Pešti">
+            </a>
+          </div>
+          <div class="popup-quote">
+            🎄 Hi there! I'm Žiga, a Computer Science & IT student at the University of Maribor (FERI). Passionate about high-performance C++ systems, full-stack architectures, and agentic AI workflows.
+          </div>
+          <a class="popup-close" onclick="history.back()">&times;</a>
+        </div>
+      </div>
+
+      <div id="userName">
+        Žiga Pešti
+      </div>
+      <div id="userHandle">
+        @ziga-pesti
+      </div>
+      <div id="userSubtitle">
+        ❄️ Computer Science & IT Student @ FERI | Developer
+      </div>
+
+      <div id="links">
+        <a class="link" href="https://github.com/ziga-pesti" target="_blank">
+          <i class="fab fa-github">&nbsp;</i>GitHub
+        </a>
+        <a class="link" href="https://www.linkedin.com/in/ziga-pesti/" target="_blank">
+          <i class="fab fa-linkedin">&nbsp;</i>LinkedIn
+        </a>
+        <a class="link" href="https://github.com/ziga-pesti/hribovc" target="_blank">
+          <i class="fas fa-mountain">&nbsp;</i>Hribovc — Alpine Safety & IoT Platform
+        </a>
+        <a class="link" href="https://github.com/ziga-pesti/micro-dct" target="_blank">
+          <i class="fas fa-file-code">&nbsp;</i>micro-dct — C++ Image Compression Engine
+        </a>
+        <a class="link" href="mailto:ziga.pesti9@gmail.com">
+          <i class="fas fa-envelope">&nbsp;</i>Contact / Email
+        </a>
+      </div>
+    </main>
+
+    <!-- Snow Animation Engine -->
+    <script>
+      (function() {
+        const canvas = document.getElementById('snowCanvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const flakes = [];
+        const numFlakes = 70;
+
+        for (let i = 0; i < numFlakes; i++) {
+          flakes.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 3 + 1,
+            speedY: Math.random() * 1.3 + 0.6,
+            speedX: Math.random() * 0.6 - 0.3,
+            opacity: Math.random() * 0.7 + 0.3,
+            swing: Math.random() * Math.PI * 2,
+            swingSpeed: Math.random() * 0.02 + 0.01
+          });
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, width, height);
+          for (let i = 0; i < numFlakes; i++) {
+            const f = flakes[i];
+            f.swing += f.swingSpeed;
+            f.y += f.speedY;
+            f.x += Math.sin(f.swing) * 0.8 + f.speedX;
+
+            if (f.y > height + 10) {
+              f.y = -10;
+              f.x = Math.random() * width;
+            }
+            if (f.x > width) f.x = 0;
+            if (f.x < 0) f.x = width;
+
+            ctx.beginPath();
+            ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${f.opacity})`;
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.9)';
+            ctx.fill();
+          }
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
+    </script>
+  </body>
+</html>
